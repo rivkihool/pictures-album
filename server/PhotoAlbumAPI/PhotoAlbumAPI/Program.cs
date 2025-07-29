@@ -1,4 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using PhotoAlbum.Infrastructure.Data;
+using PicturesAlbum.Core.Interfaces;
+using PicturesAlbum.Infrastructure.Services;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+// כאן מוסיפים את ה-DbContext:
+builder.Services.AddDbContext<PictureDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<IPictureService, PictureService>();
+builder.Services.AddControllers();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
