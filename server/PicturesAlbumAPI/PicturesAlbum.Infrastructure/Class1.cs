@@ -1,4 +1,4 @@
-﻿namespace PhotoAlbum.Infrastructure
+﻿namespace PicturesAlbum.Infrastructure
 {
     public class Class1
     {

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PhotoAlbum.Core.Entities;
+using PicturesAlbum.Core.Entities;
 
-namespace PhotoAlbum.Infrastructure.Data
+namespace PicturesAlbum.Infrastructure.Data
 {
     public class PictureDbContext : DbContext
     {

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using PhotoAlbum.Core.Entities;
-using PhotoAlbum.Infrastructure.Data;
+using PicturesAlbum.Core.Entities;
+using PicturesAlbum.Infrastructure.Data;
 using PicturesAlbum.Core.DTO;
 using PicturesAlbum.Core.Interfaces;
 
