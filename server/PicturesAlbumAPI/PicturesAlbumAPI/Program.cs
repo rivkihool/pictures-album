@@ -9,6 +9,14 @@ var builder = WebApplication.CreateBuilder(args);
 // כאן מוסיפים את ה-DbContext:
 builder.Services.AddDbContext<PictureDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        policy => policy.WithOrigins("http://localhost:3000")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+});
+
 
 builder.Services.AddScoped<IPictureService, PictureService>();
 builder.Services.AddControllers();
@@ -32,7 +40,12 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.MapControllers(); // חובה!
 
 app.MapRazorPages();
+app.UseCors("AllowReactApp");
 
 app.Run();
+
+
+

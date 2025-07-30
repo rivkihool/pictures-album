@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PicturesAlbum.Core.DTO
+namespace PicturesAlbum.Core.DTOs
 {
     public class PictureDto
     {

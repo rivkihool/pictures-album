@@ -2,19 +2,19 @@
 using Microsoft.EntityFrameworkCore;
 using PicturesAlbum.Core.Entities;
 using PicturesAlbum.Core.Interfaces;
-using PicturesAlbumAPI.DTO;
+using PicturesAlbumAPI.DTOs;
 
 namespace PicturesAlbumAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class PictureController : ControllerBase
+    public class PicturesController : ControllerBase
     {
 
 
         private readonly IPictureService _pictureService;
 
-        public PictureController(IPictureService pictureService)
+        public PicturesController(IPictureService pictureService)
         {
             _pictureService = pictureService;
         }
@@ -27,10 +27,29 @@ namespace PicturesAlbumAPI.Controllers
             return Ok(pictures);
         }
 
-        //api/Pictures(PUT)
+        //api/Pictures(POST)
         [HttpPost]
         public async Task<IActionResult> AddPicture([FromForm] AddPictureDto dto)
         {
+            //check required fields
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            //check if exists file with the same name
+            if (await _pictureService.IsFileNameExistsAsync(dto.File.FileName))
+            {
+                return BadRequest("File name already exists.");
+            }
+
+            //check Mime type
+            if (!dto.File.ContentType.StartsWith("image/"))
+            {
+                return BadRequest("Invalid file – only image uploads are allowed.");
+            }
+
+
             // Upload or process the file (e.g. convert to byte[], save to disk/cloud)
             using var memoryStream = new MemoryStream();
             await dto.File.CopyToAsync(memoryStream);
@@ -45,8 +64,9 @@ namespace PicturesAlbumAPI.Controllers
                 FileContent = fileBytes,
             };
 
-            await _pictureService.AddPictureAsync(picture);
-            return Ok();
+            var id = await _pictureService.AddPictureAsync(picture);
+            return Ok(new { success = true, pictureId = id });
+
         }
 
     }

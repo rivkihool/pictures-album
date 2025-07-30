@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using PicturesAlbum.Core.Entities;
 using PicturesAlbum.Infrastructure.Data;
-using PicturesAlbum.Core.DTO;
+using PicturesAlbum.Core.DTOs;
 using PicturesAlbum.Core.Interfaces;
 
 namespace PicturesAlbum.Infrastructure.Services
@@ -26,11 +26,17 @@ namespace PicturesAlbum.Infrastructure.Services
                 .Select(p => new PictureDto { Id = p.Id, Name = p.Name })
                 .ToListAsync();
         }
+        public async Task<bool> IsFileNameExistsAsync(string fileName)
+        {
+            return await _context.Pictures.AnyAsync(p => p.FileName == fileName);
+        }
         public async Task<int> AddPictureAsync(Picture dto)
         {
-            // בדיקה אם קיים קובץ עם אותו שם
-            if (await _context.Pictures.AnyAsync(p => p.FileName == dto.FileName))
-                throw new InvalidOperationException("File name already exists.");
+            //// בדיקה אם קיים קובץ עם אותו שם
+            //if (await _context.Pictures.AnyAsync(p => p.FileName == dto.FileName))
+            //    return BadRequest("שם הקובץ כבר קיים. אנא בחרי שם אחר.");
+
+            //throw new InvalidOperationException("File name already exists.");
 
 
             _context.Pictures.Add(dto);

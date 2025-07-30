@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PicturesAlbum.Core.Entities;
-using PicturesAlbum.Core.DTO;
+using PicturesAlbum.Core.DTOs;
 
 namespace PicturesAlbum.Core.Interfaces
 {
     public interface IPictureService
     {
         Task<List<PictureDto>> GetPicturesAsync();
+        Task<bool> IsFileNameExistsAsync(string fileName);
+
         Task<int> AddPictureAsync(Picture dto);
+
 
     }
 }
