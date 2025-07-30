@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PhotoAlbum.Core\PicturesAlbum.Core.csproj" />
-    <ProjectReference Include="..\PhotoAlbum.Infrastructure\PicturesAlbum.Infrastructure.csproj" />
+    <ProjectReference Include="..\PicturesAlbum.Core\PicturesAlbum.Core.csproj" />
+    <ProjectReference Include="..\PicturesAlbum.Infrastructure\PicturesAlbum.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
