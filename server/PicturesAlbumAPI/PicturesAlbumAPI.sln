@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicturesAlbumAPI", "PhotoAlbumAPI\PicturesAlbumAPI.csproj", "{56D5ACF5-5633-4216-8FC7-43599FC92B61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicturesAlbumAPI", "PicturesAlbumAPI\PicturesAlbumAPI.csproj", "{56D5ACF5-5633-4216-8FC7-43599FC92B61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicturesAlbum.Infrastructure", "PhotoAlbum.Infrastructure\PicturesAlbum.Infrastructure.csproj", "{3090DBAD-E98C-408B-94E1-C341384A7D9A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicturesAlbum.Infrastructure", "PicturesAlbum.Infrastructure\PicturesAlbum.Infrastructure.csproj", "{3090DBAD-E98C-408B-94E1-C341384A7D9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicturesAlbum.Core", "PhotoAlbum.Core\PicturesAlbum.Core.csproj", "{8D1489AE-35C8-4BC9-BDB3-3EBB51761B12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicturesAlbum.Core", "PicturesAlbum.Core\PicturesAlbum.Core.csproj", "{8D1489AE-35C8-4BC9-BDB3-3EBB51761B12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

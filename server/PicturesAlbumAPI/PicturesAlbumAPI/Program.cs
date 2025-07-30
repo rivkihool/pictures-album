@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using PhotoAlbum.Infrastructure.Data;
+using PicturesAlbum.Infrastructure.Data;
 using PicturesAlbum.Core.Interfaces;
 using PicturesAlbum.Infrastructure.Services;
 

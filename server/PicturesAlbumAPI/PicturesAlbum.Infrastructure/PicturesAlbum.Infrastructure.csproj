@@ -15,7 +15,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PhotoAlbum.Core\PicturesAlbum.Core.csproj" />
+    <ProjectReference Include="..\PicturesAlbum.Core\PicturesAlbum.Core.csproj" />
+    <ProjectReference Include="..\PicturesAlbum.Core\PicturesAlbum.Core.csproj" />
   </ItemGroup>
 
 </Project>

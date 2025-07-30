@@ -1,4 +1,4 @@
-﻿namespace PhotoAlbum.Core
+﻿namespace PicturesAlbum.Core
 {
     public class Class1
     {

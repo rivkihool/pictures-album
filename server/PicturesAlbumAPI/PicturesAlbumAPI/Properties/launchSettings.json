@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "PhotoAlbumAPI": {
+    "PicturesAlbumAPI": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
