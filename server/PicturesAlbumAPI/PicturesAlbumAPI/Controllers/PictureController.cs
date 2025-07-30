@@ -26,6 +26,8 @@ namespace PicturesAlbumAPI.Controllers
             var pictures = await _pictureService.GetPicturesAsync();
             return Ok(pictures);
         }
+
+        //api/Pictures(PUT)
         [HttpPost]
         public async Task<IActionResult> AddPicture([FromForm] AddPictureDto dto)
         {
