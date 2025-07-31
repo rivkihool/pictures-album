@@ -416,3 +416,6 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+server/PicturesAlbum/PicturesAlbumAPI/appsettings.json
+server/PicturesAlbum/PicturesAlbumAPI/appsettings.Development.json
+
