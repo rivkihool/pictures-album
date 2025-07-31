@@ -12,7 +12,6 @@ namespace PicturesAlbum.Core.Interfaces
     {
         Task<List<PictureDto>> GetPicturesAsync();
         Task<bool> IsFileNameExistsAsync(string fileName);
-
         Task<int> AddPictureAsync(Picture dto);
 
 

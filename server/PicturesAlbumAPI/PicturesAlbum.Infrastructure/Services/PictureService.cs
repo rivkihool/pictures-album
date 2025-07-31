@@ -11,6 +11,7 @@ using PicturesAlbum.Core.Interfaces;
 
 namespace PicturesAlbum.Infrastructure.Services
 {
+    /// Handles business logic for adding and retrieving pictures.
     public class PictureService : IPictureService
     {
         private readonly PictureDbContext _context;
@@ -32,13 +33,6 @@ namespace PicturesAlbum.Infrastructure.Services
         }
         public async Task<int> AddPictureAsync(Picture dto)
         {
-            //// בדיקה אם קיים קובץ עם אותו שם
-            //if (await _context.Pictures.AnyAsync(p => p.FileName == dto.FileName))
-            //    return BadRequest("שם הקובץ כבר קיים. אנא בחרי שם אחר.");
-
-            //throw new InvalidOperationException("File name already exists.");
-
-
             _context.Pictures.Add(dto);
             await _context.SaveChangesAsync();
 

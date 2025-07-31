@@ -21,8 +21,8 @@ builder.Services.AddCors(options =>
 builder.Services.AddScoped<IPictureService, PictureService>();
 builder.Services.AddControllers();
 
-// Add services to the container.
-builder.Services.AddRazorPages();
+//// Add services to the container.
+//builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -39,11 +39,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseCors("AllowReactApp");
+
 app.UseAuthorization();
 app.MapControllers(); // חובה!
 
-app.MapRazorPages();
-app.UseCors("AllowReactApp");
+//app.MapRazorPages();
 
 app.Run();
 
