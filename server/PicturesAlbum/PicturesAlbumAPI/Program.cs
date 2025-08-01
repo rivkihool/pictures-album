@@ -6,9 +6,10 @@ using PicturesAlbum.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// כאן מוסיפים את ה-DbContext:
+// here add the-DbContext:
 builder.Services.AddDbContext<PictureDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",
@@ -20,9 +21,6 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IPictureService, PictureService>();
 builder.Services.AddControllers();
-
-//// Add services to the container.
-//builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
@@ -42,9 +40,7 @@ app.UseRouting();
 app.UseCors("AllowReactApp");
 
 app.UseAuthorization();
-app.MapControllers(); // חובה!
-
-//app.MapRazorPages();
+app.MapControllers();
 
 app.Run();
 

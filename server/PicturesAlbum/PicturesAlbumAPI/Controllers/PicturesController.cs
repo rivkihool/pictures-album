@@ -10,8 +10,6 @@ namespace PicturesAlbumAPI.Controllers
     [Route("api/[controller]")]
     public class PicturesController : ControllerBase
     {
-
-
         private readonly IPictureService _pictureService;
 
         public PicturesController(IPictureService pictureService)
