@@ -71,7 +71,7 @@ export default function PictureForm({ onPictureAdded }) {
         setForm({ name: '', description: '', date: '', file: null });
         setFileName('');
         setError('');
-        setShowConfirm(false); // ⭐ סגירת המודאל
+        setShowConfirm(false); // ⭐ close model
     };
 
     return (
@@ -116,7 +116,7 @@ export default function PictureForm({ onPictureAdded }) {
                 <button type="button" onClick={() => setShowConfirm(true)}>Reset</button>
             </form>
 
-            {/* ⭐ מודאל */}
+            {/* ⭐ model */}
             {showConfirm && (
                 <div className="modal-overlay">
                     <div className="modal">
