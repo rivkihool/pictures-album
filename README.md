@@ -75,7 +75,7 @@ with your connection string, for example:
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=PicturesDb;Trusted_Connection=True;"
+  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=PicturesAlbumDB;Trusted_Connection=True;"
 }
 ```
 
