@@ -1,144 +1,171 @@
+# 📸 Personal Pictures Album Web Application
 
+## 📝 Overview
 
-# 📸 Pictures Album Project
+This is a full-stack web application that allows a user to manage a personal pictures album.
 
-This project is a simple web-based Single Page Application (SPA) that allows users to manage a personal photo album. It includes a **React.js** frontend and a **.NET Core Web API** backend with a **SQL Server** database.
+* **Frontend**: React (SPA)
+* **Backend**: .NET Core WebAPI
+* **Database**: SQL Server (LocalDB)
+* **Architecture**: Layered solution with clear separation of concerns
+
+The system is accessed via a direct URL and **does not require login or authentication**.
 
 ---
 
-## 📁 Project Structure
+## 🧩 Project Structure
 
-The solution contains 3 main projects:
-
-PicturesAlbum
+```
+PicturesAlbum/                 <-- Root
 │
-├── PicturesAlbum.Core
-│ ├── DTOs
-│ ├── Entities
-│ ├── Interfaces
-│ └── Services
+├── client/                    <-- React Frontend (create-react-app)
+│   ├── public/
+│   └── src/
+│       ├── components/
+│       └── App.js
 │
-├── PicturesAlbum.Infrastructure
-│ ├── Data
-│ │ └── PictureDbContext.cs
-│ ├── Migrations
-│ ├── Services
-│ └── DesignTimeDbContextFactory.cs
+├── server/                    <-- .NET Solution Folder
+│   ├── PicturesAlbum.Core/          <-- Entities, DTOs, Interfaces
+│   ├── PicturesAlbum.Infrastructure/ <-- EF DbContext, Repository
+│   ├── PicturesAlbumAPI/            <-- Controllers, Startup Config
+│   │   ├── appsettings.json
+│   │   ├── Program.cs
+│   │   └── Controllers/
+│   └── PicturesAlbum.sln           <-- Solution file
 │
-└── PicturesAlbumAPI (Startup Project)
-├── Controllers
-├── DTOs
-├── Pages
-├── wwwroot
-└── appsettings.json
-
+└── README.md
+```
 
 ---
 
-## 🧩 Project Summary
+## 🔧 Features
 
-- No authentication required – open to public access
-- Upload and view pictures
-- Backend: RESTful API using ASP.NET Core
-- Frontend: React SPA using Axios to communicate with backend
-- Entity Framework Core Code-First
-- Layered architecture: Core, Infrastructure, and API
+1. View existing uploaded pictures by name + ID.
+2. Upload a new picture with its name and file.
+3. Backend handles file saving + metadata insertion to DB.
+4. All pictures stored in SQL Server with name, filename, timestamp.
+5. Professional layered architecture:
 
----
-
-## 🛠️ Technologies Used
-
-- **Backend**: ASP.NET Core Web API (.NET 6+)
-- **Frontend**: React.js
-- **Database**: SQL Server
-- **ORM**: Entity Framework Core
-- **Development Tools**: Visual Studio 2022, SSMS, Git, VS Code
+   * **Core**: Entities, contracts (interfaces, DTOs).
+   * **Infrastructure**: Data access logic (EF Core).
+   * **API**: WebAPI controllers, middleware, configuration.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Setup Instructions
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR-REPO
+git clone https://github.com/<your-repo>/pictures-album.git
 cd pictures-album
+```
 
-2. Configure the Database
-In the PicturesAlbumAPI project, create or edit the appsettings.json file with your SQL Server connection string:
-{
-  "ConnectionStrings": {
-    "DefaultConnection": "Server=YOUR_SERVER_NAME;Database=PicturesDb;Trusted_Connection=True;TrustServerCertificate=True;"
-  },
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
-    }
-  },
-  "AllowedHosts": "*"
+### 2. Database Setup (SQL Server LocalDB)
+
+Ensure you have LocalDB installed (comes with Visual Studio).
+
+Update the file:
+
+```
+server/PicturesAlbumAPI/appsettings.json
+```
+
+with your connection string, for example:
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "Server=(localdb)\\mssqllocaldb;Database=PicturesDb;Trusted_Connection=True;"
 }
-Replace YOUR_SERVER_NAME with your actual SQL Server instance name.
+```
 
-3. Apply Database Migrations
-1.Open Visual Studio
+Apply migrations:
 
-2.Set Default Project in Package Manager Console to PicturesAlbum.Infrastructure
+```bash
+cd server
+cd PicturesAlbumAPI
+# OR set as startup project and open Package Manager Console
+Add-Migration InitialCreate
+Update-Database
+```
 
-3.Run:Update-Database
-This will apply the migration and create the DB schema.
+### 3. Run the Backend (WebAPI)
 
- ▶️Run the Backend API
-1.Open the solution in Visual Studio
+Using Visual Studio:
 
-2.Right-click on PicturesAlbumAPI → Set as Startup Project
+* Set **PicturesAlbumAPI** as Startup Project.
+* Hit **F5** or run without debugging.
 
-3.Press F5 or click Run
+Or via CLI:
 
-Backend API will start at:https://localhost:xxxx/api/Pictures
+```bash
+cd server/PicturesAlbumAPI
+dotnet run
+```
 
-💻 Run the React Frontend
-1.Open terminal
+Default URL: `https://localhost:5001/api/pictures`
 
-2.Navigate to the client folder
+### 4. Run the Frontend (React)
+
+```bash
 cd client
-3.Install dependencies:npm install
-4.Start the development server:npm start
-React app will open at:http://localhost:3000
+npm install
+npm start
+```
 
+Opens on: `http://localhost:3000`
 
-📂 API Endpoints
-Method	Endpoint	Description
-GET	/api/Pictures	Get all pictures
-POST	/api/Pictures	Upload a new picture
+---
 
+## 🛠 Technologies Used
 
-📝 Notes
-Uploaded images are stored in: PicturesAlbumAPI/wwwroot/images/
+* React 18
+* Axios
+* ASP.NET Core 7 WebAPI
+* Entity Framework Core
+* SQL Server (LocalDB)
+* Custom CSS (no framework)
 
-Data is stored in the SQL Server database
+---
 
-The project was built with clean code principles:
+## 📂 Folder Notes
 
-DTOs for communication
+* `appsettings.json`: Required for local DB config (included in repo)
+* `DesignTimeDbContextFactory.cs`: Added for design-time migration support
+* `wwwroot/uploads`: Where uploaded pictures are saved (create if missing)
 
-Dependency injection
+---
 
-Layered separation: Core, Infrastructure, API
+## 🧪 Usage Flow
 
-No authentication or user management included (not required)
+1. User opens the app in browser (`http://localhost:3000`)
+2. Left panel shows uploaded pictures (ID + Name)
+3. Right panel contains form to upload new picture:
 
+   * Enter name
+   * Choose image
+   * Click **Upload**
+4. Picture is saved to disk + DB, and list updates
 
-📌 Purpose
-This project was built as a technical assignment for a job application. It demonstrates full-stack development skills, clean architecture, and the ability to deliver a working end-to-end web application.
+---
 
-👩‍💻 Developer
-Name: Rivka Hool
-Role: Full Stack Developer
-Experience: 3+ years
-Languages: C#, JavaScript
-Contact: Upon request
+## 📌 Notes
 
+* No authentication required — open for demo purposes only.
+* Error handling is minimal to focus on functionality.
+* Code structured cleanly to reflect separation of concerns.
 
+---
 
+## ✅ Completion Status
 
+This project fulfills all requirements of the assignment:
+
+* SPA using React
+* .NET WebAPI backend
+* Picture upload + display
+* Clear architecture and documentation
+
+---
+
+Thank you for reviewing! Feel free to reach out if any setup issues occur.
