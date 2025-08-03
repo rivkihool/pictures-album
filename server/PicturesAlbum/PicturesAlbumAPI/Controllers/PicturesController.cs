@@ -37,7 +37,14 @@ namespace PicturesAlbumAPI.Controllers
             //check required fields
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+
+                var errors = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
+
+                return BadRequest(new { errors });
+
             }
             if (dto.File == null || dto.File.Length == 0)
             {
