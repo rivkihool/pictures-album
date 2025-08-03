@@ -85,6 +85,7 @@ Apply migrations:
 cd server
 cd PicturesAlbumAPI
 # OR set as startup project and open Package Manager Console
+choose:PicturesAlbum.Infrastructure
 Add-Migration InitialCreate
 Update-Database
 ```
