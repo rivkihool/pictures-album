@@ -1,3 +1,4 @@
+/* Reset body margin and define default font smoothing */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -7,11 +8,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Define monospace font for code elements */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
+/* General layout container for form and list */
 .container {
   max-width: 900px;
   margin: 30px auto;
@@ -19,25 +22,29 @@ code {
   border-radius: 12px;
   background-color: #f9f9f9;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  direction: rtl;
+  direction: rtl; /* Right-to-left layout */
   font-family: 'Segoe UI', sans-serif;
 }
 
+/* Section titles */
 h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-form>div {
+/* Margin between form fields */
+form > div {
   margin-bottom: 15px;
 }
 
+/* Style for labels */
 label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
+/* Common input and textarea styles */
 input[type="text"],
 input[type="file"],
 input[type="datetime-local"],
@@ -49,6 +56,7 @@ textarea {
   box-sizing: border-box;
 }
 
+/* Base button style */
 button {
   padding: 10px 20px;
   margin-right: 10px;
@@ -58,21 +66,24 @@ button {
   font-weight: bold;
 }
 
+/* Submit button */
 button[type="submit"] {
   background-color: #007bff;
   color: white;
 }
 
+/* Cancel/reset button */
 button[type="button"] {
   background-color: #6c757d;
   color: white;
 }
 
+/* Hover effect for buttons */
 button:hover {
   opacity: 0.9;
 }
 
-
+/* Form container styling (used for the upload form) */
 .form-container {
   direction: ltr;
   text-align: left;
@@ -84,18 +95,21 @@ button:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Form title styling */
 .form-container h2 {
   margin-bottom: 16px;
   color: #333;
   text-align: center;
 }
 
+/* Label inside form container */
 .form-container label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
+/* Inputs inside form container */
 .form-container input,
 .form-container textarea {
   width: 100%;
@@ -105,6 +119,7 @@ button:hover {
   border-radius: 6px;
 }
 
+/* Submit button inside form */
 .form-container button {
   padding: 10px 16px;
   margin-right: 10px;
@@ -115,14 +130,17 @@ button:hover {
   cursor: pointer;
 }
 
+/* Cancel button inside form */
 .form-container button[type='button'] {
   background-color: #6c757d;
 }
 
+/* Hover effect */
 .form-container button:hover {
   opacity: 0.9;
 }
 
+/* Error message styling */
 .form-container .error {
   color: red;
   font-weight: bold;
@@ -130,6 +148,7 @@ button:hover {
   direction: ltr;
 }
 
+/* Picture list container */
 .picture-list {
   direction: ltr;
   text-align: left;
@@ -141,17 +160,20 @@ button:hover {
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Title of the picture list section */
 .picture-list h2 {
   margin-bottom: 16px;
   color: #333;
   text-align: center;
 }
 
+/* Picture table style */
 .picture-list table {
   width: 100%;
   border-collapse: collapse;
 }
 
+/* Picture list cells */
 .picture-list th,
 .picture-list td {
   padding: 12px;
@@ -160,15 +182,18 @@ button:hover {
   vertical-align: top;
 }
 
+/* Header background color */
 .picture-list th {
   background-color: #f0f0f0;
   font-weight: bold;
 }
 
+/* Even rows background */
 .picture-list tr:nth-child(even) {
   background-color: #fafafa;
 }
 
+/* Title for page */
 .page-title {
   text-align: center;
   margin-top: 30px;
@@ -176,6 +201,7 @@ button:hover {
   color: #333;
 }
 
+/* Custom style for file input */
 .custom-file-button {
   display: inline-block;
   padding: 8px 16px;
@@ -187,14 +213,18 @@ button:hover {
   margin-right: 10px;
 }
 
+/* Hover effect on file input */
 .custom-file-button:hover {
   background-color: #45a049;
 }
 
+/* Style for selected file name */
 .file-name {
   font-style: italic;
   color: #555;
 }
+
+/* Overlay for modal dialogs */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -208,6 +238,7 @@ button:hover {
   z-index: 999;
 }
 
+/* Modal box style */
 .modal {
   background: white;
   padding: 20px 30px;
@@ -217,6 +248,7 @@ button:hover {
   max-width: 400px;
 }
 
+/* Button section inside modal */
 .modal-buttons {
   margin-top: 15px;
   display: flex;

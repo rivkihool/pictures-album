@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { addPicture } from '../services/api';
 
 export default function PictureForm({ onPictureAdded }) {
+
+    // Initialize state for the form inputs
     const [form, setForm] = useState({
         name: '',
         description: '',
@@ -9,15 +11,24 @@ export default function PictureForm({ onPictureAdded }) {
         file: null
     });
 
+    // State to store selected file name
     const [fileName, setFileName] = useState('');
+
+    // State for displaying error messages
     const [error, setError] = useState('');
+
+    // State to control confirmation modal
     const [showConfirm, setShowConfirm] = useState(false);
+
+    // State to indicate loading during submission
     const [isLoading, setIsLoading] = useState(false);
 
+    // Handle changes in input fields (name, description, date)
     const handleChange = (e) => {
         setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
+    // Handle file input selection and validation
     const handleFileChange = (e) => {
         const file = e.target.files[0];
         if (!file) return;
@@ -34,11 +45,13 @@ export default function PictureForm({ onPictureAdded }) {
         setError('');
     };
 
+    // Handle form submission: validate input and send to backend
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
         setError('');
 
+        // Simple client-side validation
         if (!form.name || !form.file) {
             if (!form.name) setError('Picture name is required');
             else setError('Image file is required');
@@ -46,6 +59,7 @@ export default function PictureForm({ onPictureAdded }) {
             return;
         }
 
+        // Prepare multipart form data for backend
 
         const formData = new FormData();
         formData.append('name', form.name);
@@ -54,8 +68,9 @@ export default function PictureForm({ onPictureAdded }) {
         formData.append('file', form.file);
 
         try {
-            await addPicture(formData);
-            onPictureAdded();
+            await addPicture(formData);// API call
+            onPictureAdded();// Refresh picture list on success
+            // Reset form after successful upload
             setForm({ name: '', description: '', date: '', file: null });
             setFileName('');
         } catch (err) {
@@ -67,15 +82,17 @@ export default function PictureForm({ onPictureAdded }) {
 
     };
 
+    // Reset form fields and error stateF
     const handleResetConfirm = () => {
         setForm({ name: '', description: '', date: '', file: null });
         setFileName('');
         setError('');
-        setShowConfirm(false); // ⭐ סגירת המודאל
+        setShowConfirm(false); // ⭐ close model
     };
 
     return (
         <>
+            {/* Upload Picture Form */}
             <form className="form-container" onSubmit={handleSubmit}>
                 <h2>Add New Picture</h2>
 
@@ -108,15 +125,17 @@ export default function PictureForm({ onPictureAdded }) {
                     <span className="file-name">{fileName}</span>
                 </div>
 
+                {/* Display error if exists */}
                 {error && <p className="error">{error}</p>}
 
+                {/* Submit and Reset buttons */}
                 <button type="submit" disabled={isLoading}>
                     {isLoading ? 'Uploading...' : 'Add Picture'}
                 </button>
                 <button type="button" onClick={() => setShowConfirm(true)}>Reset</button>
             </form>
 
-            {/* ⭐ מודאל */}
+            {/* Confirmation Modal for Reset */}
             {showConfirm && (
                 <div className="modal-overlay">
                     <div className="modal">

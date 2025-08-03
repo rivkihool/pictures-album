@@ -10,8 +10,6 @@ namespace PicturesAlbumAPI.Controllers
     [Route("api/[controller]")]
     public class PicturesController : ControllerBase
     {
-
-
         private readonly IPictureService _pictureService;
 
         public PicturesController(IPictureService pictureService)
@@ -39,7 +37,14 @@ namespace PicturesAlbumAPI.Controllers
             //check required fields
             if (!ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+
+                var errors = ModelState.Values
+                    .SelectMany(v => v.Errors)
+                    .Select(e => e.ErrorMessage)
+                    .ToList();
+
+                return BadRequest(new { errors });
+
             }
             if (dto.File == null || dto.File.Length == 0)
             {

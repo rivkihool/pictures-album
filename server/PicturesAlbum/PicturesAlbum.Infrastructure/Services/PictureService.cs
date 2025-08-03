@@ -21,16 +21,26 @@ namespace PicturesAlbum.Infrastructure.Services
             _context = context;
         }
 
+        /// Retrieves a list of all pictures with their ID and Name only.
+        /// <returns>List of PictureDto containing Id and Name.</returns>
         public async Task<List<PictureDto>> GetPicturesAsync()
         {
             return await _context.Pictures
                 .Select(p => new PictureDto { Id = p.Id, Name = p.Name })
                 .ToListAsync();
         }
+
+        /// Checks if a picture with the given file name already exists in the database.
+        /// <param name="fileName">The name of the file to check.</param>
+        /// <returns>True if the file name exists, otherwise false.</returns>
         public async Task<bool> IsFileNameExistsAsync(string fileName)
         {
             return await _context.Pictures.AnyAsync(p => p.FileName == fileName);
         }
+
+        /// Adds a new picture entity to the database.
+        /// <param name="dto">The Picture entity to be added.</param>
+        /// <returns>The Id of the newly added picture.</returns>
         public async Task<int> AddPictureAsync(Picture dto)
         {
             _context.Pictures.Add(dto);
